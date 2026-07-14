@@ -30,6 +30,7 @@ show_help() {
 # Set variables
 name=
 ref=
+mindepth=10
 cores=1
 
 # Process options
@@ -43,6 +44,8 @@ while getopts "hn:o:r:b:c:" option; do
             name=$OPTARG;;
         r) # reference directory
             ref=$OPTARG;;
+        d) # mindepth
+            mindepth=$OPTARG;;
         c) # cores
             cores=$OPTARG;;
         \?) # Invalid option
@@ -157,7 +160,7 @@ wait
 # Clean up output
 mv "$to/$name"_splitting_report.txt "$to/$name".bam_splitting_report.txt &
 mv "$to/$name".M-bias.txt "$to/$name".bam_M-bias.txt &
-countz.sh "$to"/CpG_OT_"$name".txt "$to"/CpG_OB_"$name".txt > \
+countz.sh "$to"/CpG_OT_"$name".txt "$to"/CpG_OB_"$name".txt $mindepth > \
     "$to/$name"_methylation.cov &
 wait
 

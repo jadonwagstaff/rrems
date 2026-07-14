@@ -1,3 +1,7 @@
+## Backward compatable changes
+
+* The rrems.sh function has a -d option that passes the users minimum read depth to the countz.sh call.
+
 # rrems v0.1.2
 
 ## Major changes
